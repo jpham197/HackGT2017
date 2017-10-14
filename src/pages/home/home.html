@@ -1,14 +1,16 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      GoodDeal
+      I want iPhone X
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is better for you when you have better price on items you want to buy.
-  <p>
-    If you get lost, we will be your guide.
-  </p>
+<ion-content>
+  <ion-searchbar (ionInput)="getItems($event)" (ionCancel)="onCancel($event)"></ion-searchbar> 
+  <ion-list>
+    <ion-item *ngFor="let item of items" (click)="goToItemPage(item)">
+      {{ item }}
+    </ion-item>
+  </ion-list>
 </ion-content>
