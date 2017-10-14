@@ -24,8 +24,13 @@ export class ItemPage {
     this.item = navParams.get('item');
     this.itemName = this.item.shortDescription.values[0].value;
     ncrApi.getItemPrice().subscribe(res => {
-      this.itemPrice = res.snapshot[navParams.get('index')].price;
-      console.log(res.snapshot[navParams.get('index')].price);
+      this.itemPrice = res.snapshot.slice(0, 20).filter((item) => {
+        console.log(this.item.itemId.itemCode);
+        return (item.priceId.itemCode.toLowerCase().indexOf(this.item.itemId.itemCode.toLowerCase()) > -1);
+      })[0].price;
+      console.log(this.itemPrice);
+      console.log(res);
+      console.log(this.item);
     });
   }
 
