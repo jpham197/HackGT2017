@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { GetItemPricesProvider } from '../../providers/get-item-prices/get-item-prices';
 
 @Component({
   selector: 'page-home',
@@ -8,7 +9,7 @@ import { NavController } from 'ionic-angular';
 export class HomePage {
 	items;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public service: GetItemPricesProvider) {
   	this.initializeItems();
   }
 
@@ -36,6 +37,10 @@ export class HomePage {
   			return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
   		})
   	}
+  }
+
+  getData() {
+	this.service.getdata().subscribe(res => console.log(res));
   }
 
   goToItemPage() {
