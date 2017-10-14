@@ -3,13 +3,16 @@
     <ion-title>
       GoodDeal
     </ion-title>
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is better for you when you have better price on items you want to buy.
-  <p>
-    If you get lost, we will be your guide.
-  </p>
-  <button ion-button block (click)="getdata()">Get Data</button>
+  <ion-list>
+    <ion-item *ngFor="let item of items; let i = index" (click)="gotoItemPage(item, i)">
+      {{ getItem(item) }}
+    </ion-item>
+  </ion-list>
+
+  <button ion-button block (click)="getItemPrice()">Get Price</button>
 </ion-content>

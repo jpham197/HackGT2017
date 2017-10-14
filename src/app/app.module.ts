@@ -6,7 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { NcrapiProvider } from '../providers/ncrapi/ncrapi';
+import { NcrApiProvider } from '../providers/ncrapi/ncrapi';
 import { HttpModule } from '@angular/http';
 
 @NgModule({
@@ -28,7 +28,7 @@ import { HttpModule } from '@angular/http';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    NcrapiProvider
+    NcrApiProvider
   ]
 })
 export class AppModule {}

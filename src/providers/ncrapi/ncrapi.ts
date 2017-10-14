@@ -1,16 +1,20 @@
 import { Injectable } from '@angular/core';
-import {Headers, Http} from '@angular/http';
+import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 /*
-  Generated class for the NcrapiProvider provider.
+  Generated class for the NcrApiProvider provider.
 
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
 @Injectable()
-export class NcrapiProvider {
-  transURL = 'https://hackgt-api.ncrcloud.com/transaction-document/2.0.0-M3/transaction-documents/2.0/4615160b-ffeb-4486-8764-e86ed84254af';
+export class NcrApiProvider {
+  itemPriceURL = 'https://hackgt-api.ncrcloud.com/catalog/2.0.2/item-prices/1.0/snapshot';
+  itemsURL = 'https://hackgt-api.ncrcloud.com/catalog/2.0.2/items/1.0/snapshot';
+  servicesURL = 'https://hackgt-api.ncrcloud.com/apimanagement/3.1.2-GA/application-services/1.0/find-by-criteria';
+  itemURL = 'https://hackgt-api.ncrcloud.com/catalog/2.0.2/items/1.0/';
+
   headerDict = {
     'authorization': 'Basic L29yZy0xL2FkbWluOkNoYW5nM20zISEtYWRtaW4tb3JnLTE=',
     'cache-control': 'no-cache',
@@ -27,9 +31,26 @@ export class NcrapiProvider {
 
   }
 
-  getdata() {
-    return this.http.get(this.transURL, {headers: new Headers(this.headerDict)})
+  getdata(url) {
+    return this.http.get(url, {headers: new Headers(this.headerDict)})
       .map(res => res.json());
   }
+
+  getItemPrice() {
+    return this.getdata(this.itemPriceURL);
+  }
+
+  getItems() {
+    return this.getdata(this.itemsURL);
+  }
+
+  getServices() {
+    return this.getdata(this.servicesURL);
+  }
+
+  getItem(id: string) {
+    return this.getdata(this.itemURL + id);
+  }
+
 
 }
