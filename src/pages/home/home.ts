@@ -30,7 +30,6 @@ export class HomePage {
 
   getItems(ev: any) {
     // Reset items back to all of the items
-    this.getdata();
 
     // set val to the value of the searchbar
     let val = ev.target.value;
