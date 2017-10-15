@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch'
+import {Observable} from "rxjs/Observable";
 
 /*
   Generated class for the NcrApiProvider provider.
@@ -33,7 +35,14 @@ export class NcrApiProvider {
 
   getdata(url) {
     return this.http.get(url, {headers: new Headers(this.headerDict)})
-      .map(res => res.json());
+      .map(res => res.json())
+      .catch(this.handleError); // Trouble line.
+    // Without this line code works perfectly.
+  }
+
+  public handleError(error: Response) {
+    console.error(error);
+    return Observable.throw(error || 'Server error');
   }
 
   getItemPrice() {

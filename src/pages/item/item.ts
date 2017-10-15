@@ -18,20 +18,26 @@ export class ItemPage {
 
   item;
   itemName:string;
-  itemPrice:number;
+  itemNewPrice:number;
+  itemDescription:string;
+  itemNewEffectiveDate:Date;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public ncrApi: NcrApiProvider) {
     this.item = navParams.get('item');
     this.itemName = this.item.shortDescription.values[0].value;
+    this.itemDescription = this.item.longDescription.values[0].value;
     ncrApi.getItemPrice().subscribe(res => {
-      this.itemPrice = res.snapshot.slice(0, 20).filter((item) => {
-        console.log(this.item.itemId.itemCode);
+      this.itemNewPrice = res.snapshot.filter((item) => {
+        // console.log(item.priceId.itemCode);
+        // console.log(this.item.itemId.itemCode);
         return (item.priceId.itemCode.toLowerCase().indexOf(this.item.itemId.itemCode.toLowerCase()) > -1);
       })[0].price;
-      console.log(this.itemPrice);
-      console.log(res);
-      console.log(this.item);
+      // console.log(this.itemPrice);
+      // console.log(res);
+      // console.log(this.item);
     });
+
+    this.itemNewEffectiveDate = new Date('2017-10-09T13:48:19Z');
   }
 
   ionViewDidLoad() {

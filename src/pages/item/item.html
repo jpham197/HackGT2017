@@ -14,5 +14,27 @@
 
 
 <ion-content padding>
-  <ion-item> {{ itemPrice }} </ion-item>
+  <ion-item no-lines>
+    New Price:
+    <a item-end><b>{{ itemNewPrice }}</b> USD</a>
+  </ion-item>
+  <ion-item no-lines>
+    Effective Date:
+    <b item-end>{{ itemNewEffectiveDate | date }}</b>
+  </ion-item>
+
+  <ion-item no-lines>
+    Old Price:
+    <a item-end><b>4.12</b> USD</a>
+  </ion-item>
+  <ion-item no-lines>
+    Effective Date:
+    <b item-end>Oct 2, 2017</b>
+  </ion-item>
+
+  <ion-item no-lines text-wrap>
+    Item Description:
+    <p style="margin-top: 10px">{{ itemDescription }}</p>
+  </ion-item>
+
 </ion-content>
