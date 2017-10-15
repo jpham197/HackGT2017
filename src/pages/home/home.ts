@@ -2,16 +2,21 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { NcrApiProvider } from '../../providers/ncrapi/ncrapi';
 
+import {FirebaseServiceProvider} from '../../providers/firebase-service/firebase-service';
+// import {FirebaseListObservable} from 'angularfire2/database';
+
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
+
   items = [];
   list;
   listPrice = [];
 
-  constructor(public navCtrl: NavController, public ncrService: NcrApiProvider) {
+  constructor(public navCtrl: NavController, public ncrService: NcrApiProvider, public firebaseService: FirebaseServiceProvider) {
     this.getdata();
     this.getAllPrice();
   }
@@ -32,7 +37,11 @@ export class HomePage {
 
   gotoItemPage(item, index) {
     this.navCtrl.push('ItemPage', {item: item});
+    // this.list.forEach(element => {
+    //   this.addItem(element);
+    // });
   }
+
 
   getItem(item) {
     return item.shortDescription.values[0].value;
@@ -70,6 +79,7 @@ export class HomePage {
 
   getItemPrice() {
     this.ncrService.getItemPrice().subscribe(res => console.log(res));
+    this.firebaseService.addItem({asd: 'asdasd'});
   }
 
   getSpecificItem() {
