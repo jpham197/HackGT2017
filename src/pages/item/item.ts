@@ -21,6 +21,7 @@ export class ItemPage {
   itemNewPrice:number;
   itemDescription:string;
   itemNewEffectiveDate:Date;
+  itemOldPrice:number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public ncrApi: NcrApiProvider) {
     this.item = navParams.get('item');
@@ -37,6 +38,7 @@ export class ItemPage {
       // console.log(this.item);
     });
 
+    this.itemOldPrice = 5.15;
     this.itemNewEffectiveDate = new Date('2017-10-09T13:48:19Z');
   }
 

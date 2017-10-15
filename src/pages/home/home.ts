@@ -9,16 +9,24 @@ import { NcrApiProvider } from '../../providers/ncrapi/ncrapi';
 export class HomePage {
   items = [];
   list;
+  listPrice = [];
 
   constructor(public navCtrl: NavController, public ncrService: NcrApiProvider) {
     this.getdata();
+    this.getAllPrice();
   }
 
   getdata() {
     this.ncrService.getItems().subscribe(res => {
-      this.items = res.snapshot.slice(0, 20);
+      this.items = res.snapshot.slice(0, 50);
       this.list = this.items;
       console.log(res);
+    });
+  }
+
+  getAllPrice() {
+    this.ncrService.getItemPrice().subscribe(res => {
+      this.listPrice = res.snapshot;
     });
   }
 
@@ -43,6 +51,21 @@ export class HomePage {
         return (item.shortDescription.values[0].value.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
+  }
+
+  checkPrice(i) {
+    let result = 0;
+    let itemNewPrice:number = this.listPrice.filter((item) => {
+        return (item.priceId.itemCode.toLowerCase().indexOf(i.itemId.itemCode.toLowerCase()) > -1);
+      })[0].price;
+
+    let itemOldPrice:number = 5.15;
+    if (itemNewPrice < itemOldPrice) {
+      result = -1;
+    } else if (itemNewPrice > itemOldPrice) {
+      result = 1;
+    }
+    return result;
   }
 
   getItemPrice() {
