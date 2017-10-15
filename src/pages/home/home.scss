@@ -31,6 +31,16 @@
 	align-self: flex-end;
 }
 
+// #custom-overlay img {
+// 	display: block;
+// 	margin: 0 auto;
+// 	width: 50%;
+// 	height: auto;
+// 	z-index: 100001;
+// 	animation: animation 6100ms linear infinite both;
+// 	animation-delay: 0s;
+// }
+
 #custom-overlay img {
 	display: block;
 	margin: 0 auto;
@@ -55,6 +65,24 @@
 	}
 	100% {
 		opacity: 1;
+	}
+}
+
+@keyframes circle {
+	0% {
+		transform: rotateZ(0deg);
+	}
+	25% {
+		transform: rotateZ(90deg);
+	}
+	50% {
+		transform: rotateZ(180deg);
+	}
+	75% {
+		transform: rotateZ(270deg);
+	}
+	100% {
+		transform: rotateZ(360deg);
 	}
 }
 
