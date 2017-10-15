@@ -1,15 +1,13 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      GoodDeal
-    </ion-title>
-  </ion-navbar>
-</ion-header>
+<div id="custom-overlay" [style.display]="splash ? 'flex' : 'none'">
+	<div class="flb">
+		<div class="Aligner-item Aligner-item-top"></div>
+		<img src="assets/logo.png">
+		<div class="Aligner-item Aligner-item--butom"></div>
+		<span id="pNCR">Powered by NCR</span>
+	</div>
+
+</div>
 
 <ion-content padding>
-  The world is better for you when you have better price on items you want to buy.
-  <p>
-    If you get lost, we will be your guide.
-  </p>
-  <button ion-button block (click)="getdata()">Get Data</button>
+  <button ion-button (click)="showToast()">gimme toast</button>
 </ion-content>
