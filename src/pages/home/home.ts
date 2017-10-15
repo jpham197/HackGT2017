@@ -3,8 +3,6 @@ import { NavController } from 'ionic-angular';
 import { NcrApiProvider } from '../../providers/ncrapi/ncrapi';
 
 import {FirebaseServiceProvider} from '../../providers/firebase-service/firebase-service';
-import { ViewChild } from '@angular/core';
-import { Content } from 'ionic-angular';
 // import {FirebaseListObservable} from 'angularfire2/database';
 
 
@@ -13,8 +11,6 @@ import { Content } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage {
-
-  @ViewChild(Content) content: Content;
 
   items = [];
   list = [];
@@ -94,11 +90,11 @@ export class HomePage {
 
   doRefresh(refresher) {
     console.log('Begin async operation', refresher);
-    this.content.resize();
+    this.navCtrl.setRoot(this.navCtrl.getActive().component);
     setTimeout(() => {
       console.log('Async operation has ended');
       refresher.complete();
-    }, 1000);
+    }, 5000);
   }
 
   getItemPrice() {
