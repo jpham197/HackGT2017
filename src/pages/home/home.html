@@ -8,12 +8,15 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-list no-lines>
     <ion-item *ngFor="let item of list" (click)="gotoItemPage(item)" style="border-bottom: solid 1px #222222">
-      {{ getItem(item) }}
-      <ion-icon *ngIf="(checkPrice(item) > 0)" item-end name="arrow-round-up" color="danger"></ion-icon>
-      <ion-icon *ngIf="(checkPrice(item) == 0)" item-end name="remove"></ion-icon>
-      <ion-icon *ngIf="(checkPrice(item) < 0)" item-end name="arrow-round-down" color="secondary"></ion-icon>
+      {{ getItem(item.item) }}
+      <ion-icon *ngIf="(checkPrice(item.item, item.oldPrice) > 0)" item-end name="arrow-round-up" color="danger"></ion-icon>
+      <ion-icon *ngIf="(checkPrice(item.item, item.oldPrice) == 0)" item-end name="remove"></ion-icon>
+      <ion-icon *ngIf="(checkPrice(item.item, item.oldPrice) < 0)" item-end name="arrow-round-down" color="secondary"></ion-icon>
     </ion-item>
   </ion-list>
 

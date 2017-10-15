@@ -14,7 +14,7 @@ import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {AngularFireModule} from 'angularfire2';
 import { FirebaseServiceProvider } from '../providers/firebase-service/firebase-service';
 
-var config = {
+let config = {
   apiKey: "AIzaSyBZPAp5e4mIYq76wvSCV11OU44Ks1y0jMM",
   authDomain: "gooddeal-be3c0.firebaseapp.com",
   databaseURL: "https://gooddeal-be3c0.firebaseio.com",
