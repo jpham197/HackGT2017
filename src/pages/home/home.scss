@@ -1,4 +1,4 @@
-#custom-overlay {
+#overlay {
 	position: fixed;
 	top: 0px;
 	right: 0px;
@@ -13,7 +13,7 @@
 	background-color: #29B462; // 00ae7b; //prev: 3ebffb /
 	height: 100%;
 	width: 100%;
-	animation: pulse 2s linear forwards;
+	animation: pulse 1s linear forwards;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -31,37 +31,43 @@
 	align-self: flex-end;
 }
 
-#custom-overlay img {
+#overlay img {
 	display: block;
 	margin: 0 47% 0 53%;
 	width: 50%;
 	height: auto;
 	z-index: 100001;
-	animation: animation 6100ms linear infinite both;
+	animation: animation 6100ms linear both;
 	animation-delay: 0s;
 }
 
-#pNCR {
+#pNCR, h1 {
 	text-align: center;
 	color: #fff;
 	font-family: helvetica;
 	position: absolute;
-	bottom: 20px;
-	animation: pulse 1s linear forwards;
+
 }
 
-@keyframes pulse {
+#pNCR {
+	bottom: 20px;
+	animation: pulse 2s linear forwards both;
+	animation-delay: 1s;
+}
+
+h1 {
+	bottom: 40px;
+	animation: pulse 2s linear forwards both;
+	animation-delay: 1s;
+}
+
+@-webkit-keyframes pulse {
 	0% {
 		opacity: 0;
 	}
 	100% {
 		opacity: 1;
 	}
-}
-
-.animation-target {
-  -webkit-animation: animation 1000ms linear both;
-  animation: animation 1000ms linear both;
 }
 
 /* Generated with Bounce.js. Edit at https://goo.gl/aX5VTq */
